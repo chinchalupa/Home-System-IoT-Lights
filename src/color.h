@@ -1,27 +1,26 @@
-#ifndef COLOR_H_
-#define COLOR_H_
+#include <stdlib.h>
+#include "application.h"
 
-using namespace std;
+#ifndef COLOR_H
+#define COLOR_H
 
 class Color {
-        private:
-                unsigned char red;
-                unsigned char green;
-                unsigned char blue;
-                unsigned long hex;
+    public:
+        Color(char r, char g, char b); 
+        Color(String);
 
-        public:
-            Color() : red(0), green(0), blue(0), hex(0) {};
-            Color(const char* hexString);
-            Color(const char* hexString, const char* format);
+        char getRed();
+        char getGreen();
+        char getBlue();
 
-            unsigned char getRed();
-            void setRed(unsigned char r);
-            unsigned char getGreen();
-            void setGreen(unsigned char g);
-            unsigned char getBlue();
-            void setBlue(unsigned char b);
-            unsigned long getHex();
+    private:
+        char red;
+        char green;
+        char blue;
+        float alpha;
+        char hex[8];
+        
 };
 
 #endif
+
