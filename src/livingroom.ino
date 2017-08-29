@@ -29,6 +29,8 @@ int setAllToColor(String command) {
     return 0;
 }
 
+char myIpString[24];
+
 void setup() {
 
     s.initialize();
@@ -39,6 +41,11 @@ void setup() {
 
     waitUntil(WiFi.ready);
     Particle.function("AllColor", setAllToColor); 
+    
+    IPAddress myIp = WiFi.localIP();
+    sprintf(myIpString, "%d.%d.%d.%d", myIp[0], myIp[1], myIp[2], myIp[3]);
+    Particle.variable("ipAddress", myIpString, STRING);
+
 }
 
 void loop() {
